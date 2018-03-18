@@ -1,81 +1,84 @@
 const Usermodel = require('../models/user');
 const bcrypt = require('bcryptjs');
 
-var loginpage = function(req,res) {
-    res.render('index')
-  }
+var loginpage = function (req, res) {
+  res.render('index')
+}
 
 var create = function (req, res, next) {
-    
-      console.log(req.body.email)
-    
-      bcrypt.genSalt(10,function(err, salt){
-        bcrypt.hash(req.body.password, salt, function(err,hash){
-         console.log(hash);
-          var user = new Usermodel({
-            name: req.body.username,
-            email: req.body.email,
-            password: hash
-          
-            
-            });
-    
-            user.saveAsync()
-            .then(function(savedUser) {
-                return res.status(200).send('kayıt tamam ' + (user.name))
-              })
-              .catch(function (err) {
-                return res.render('404', {
-                  hata_kodu: err
-                });
-              });
-        });
+
+  console.log(req.body.email)
+
+  bcrypt.genSalt(10, function (err, salt) {
+    bcrypt.hash(req.body.password, salt, function (err, hash) {
+      console.log(hash);
+      var user = new Usermodel({
+        name: req.body.username,
+        email: req.body.email,
+        password: hash
+
+
       });
-    
- };
 
-var login = function (req, res, next){
-    
-      var username= req.body.username;
-      var email= req.body.email;
-      var logpassword = req.body.password;
-      
-          Usermodel.findOne({name: username, email: email}, function(err,user){
-            
-            if(err){
-              console.log(err);
-              return res.status(500).send();
-            }
-            if(!user){
-              return res.render('404',{
-                hata_kodu: err
-              })
-            }
-            bcrypt.compare(logpassword,user.password,function(err,result){
-              if(err){
-                return res.send(err)
-              }
-              if(result){
-                req.session.user = user;
-                return res.redirect('/usersList');
-              }
-              return res.render('404');
-           
-            
-          })
-  
-         }
-          )} 
+      user.saveAsync()
+        .then(function (savedUser) {
+          res.render('index')
+        })
+        .catch(function (err) {
+          return res.render('404', {
+            hata_kodu: err
+          });
+        });
+    });
+  });
 
-var logout= function(req, res){
-    req.session.destroy();
-    return res.redirect('/');
-    
+};
 
-            }         
-            
-            
-exports.create = create; 
+var login = function (req, res, next) {
+
+  //var logusername= req.body.username;
+  var email = req.body.logemail;
+  var password = req.body.logpassword;
+
+  Usermodel.findOne({ email: email }, function (err, user) {
+
+    if (err) {
+      console.log(err);
+      return res.status(500).send();
+    }
+    if (!user) {
+      return res.render('404', {
+        hata_kodu: err
+      })
+    }
+    bcrypt.compare(password, user.password, function (err, result) {
+      if (err) {
+        return res.send(err)
+      }
+      if (result) {
+
+        req.session.user = user;
+
+        return res.status(200).send('giriş başarılı');
+      }
+      return res.render('404');
+
+
+    })
+
+  }
+  )
+}
+
+var logout = function (req, res) {
+  req.session.destroy();
+  return res.redirect('/');
+
+
+}
+
+
+exports.create = create;
 exports.login = login;
 exports.loginpage = loginpage;
 exports.logout = logout;
