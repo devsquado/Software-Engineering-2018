@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Sign In</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+
+<body>
+    <div class="logo">
+        <img src="image/logo.png" alt="logo">
+    </div>
+    <form class="log-form" method="POST" action="http://localhost:1234/login" onsubmit="return loginVerify()" name="vLogin">
+        <div class="left-bar">
+            <div class="logo">
+            </div>
+            <div class="us-R">
+                <h1>Wellcome To A-Chat</h1>
+                <hr>
+            </div>
+        </div>
+
+        <div class="right-bar">
+            <h1 class=signin-title id="signin-title" style="text-align:center">Sign In!</h1>
+            <hr>
+            <div class="input-box">
+
+                <div class="input-reg">
+                    <input type="email" placeholder="Email" name="logemail" required>
+                </div>
+
+                <div class="input-reg">
+                    <input type="password" placeholder="Password" name="logpassword" required>
+                </div>
+
+                <div class="input-reg-checkbox">
+                    <label>
+                        <input type="checkbox" name="remember"> Remember me
+                    </label>
+                </div>
+
+                <div class="box-footer">
+                    <button type="submit">Sign In</button>
+                    <p class="fgt_psw">Forgot Your Password?
+                        <a href="forgot_pass.html"> Click Here!</a>
+                    </p>
+                    <p class="message">Don't have an account?
+                        <a href="#"> Sign Up!</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <form class="reg-form" method="POST" action="http://localhost:1234/register" onsubmit="return Validate()" name="vForm">
+        <div class="left-bar">
+            <h1>Terms and Conditions</h1>
+            <hr>
+            <p>deneme</p>
+        </div>
+
+        <div class="right-bar">
+
+
+            <h1 class=signin-title id="signup-title" style="text-align:center">Sign Up!</h1>
+            <hr>
+            <div class="input-box">
+
+                <div class="input-reg">
+                    <label for="fullname">
+                        <b>Full Name</b>
+                    </label>
+                    <input type="text" name="fullname" required>
+                </div>
+
+                <div class="input-reg">
+                    <label for="username">
+                        <b>Username</b>
+                    </label>
+                    <input type="text" name="username" required>
+                    <div id="name_error" class="val_error"></div>
+                </div>
+
+                <div class="input-reg">
+                    <label for="email">
+                        <b>Email</b>
+                    </label>
+                    <input type="text" name="email" required>
+                    <div id="email_error" class="val_error"></div>
+                </div>
+
+                <div class="input-reg">
+                    <label for="password">
+                        <b>Password</b>
+                    </label>
+                    <input type="password" name="password" required>
+                </div>
+
+                <div class="input-reg">
+                    <label for="password-repeat">
+                        <b>Confirm Password</b>
+                    </label>
+                    <input type="password" name="password-confirmation" required>
+                    <div id="password_error" class="val_error">
+                    </div>
+
+                    <div class="input-reg-radio">
+                        <input type="radio" name="gender" id="male" value=>
+                        <label for="male">Male</label>
+
+                        <input type="radio" name="gender" id="female" value="female">
+                        <label for="female">Female</label>
+                    </div>
+
+                    <div class="input-reg-checkbox">
+                        <label>
+                            <input type="checkbox" />I Accept Terms and Conditions
+                        </label>
+                    </div>
+
+                    <div class="box-footer">
+                        <button type="submit">Sign Up</button>
+                        <p class="message">Already have an account?
+                            <a href="#"> Sign In!</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <script>
+        $('.message a').click(function () {
+            $('form').animate({ height: "toggle", opacity: "toggle" }, "slow");
+        });
+
+        var logemail = document.forms["vLogin"]["logemail"];
+        var logpassword = document.forms["vLogin"]["logpassword"];
+
+
+        var username = document.forms["vForm"]["username"];
+        var email = document.forms["vForm"]["email"];
+        var password = document.forms["vForm"]["password"];
+        var password_confirmation = document.forms["vForm"]["password_confirmation"];
+
+        var name_error = document.getElementById("name_error");
+        var email_error = document.getElementById("email_error");
+        var password_error = document.getElementById("password_error");
+
+        username.addEventListener("blur", nameVerify, true);
+        email.addEventListener("blur", emailVerify, true);
+
+        function Validate() {
+
+
+
+            if (username.value == "") {
+                name_error.textContent = "Username is required";
+                username.style.border = "1px solid red";
+                username.focus();
+                return false;
+            }
+
+            if (email.value == "") {
+                email_error.textContent = "Email is required";
+                email.style.border = "1px solid red";
+                email.focus();
+                return false;
+            }
+
+            if (password.value != password_confirmation.value) {
+                password_error.textContent = "The two passwords do not match";
+                password.style.border = "1px solid red";
+                password_confirmation.style.border = "1px solid red";
+                password.focus();
+                return false;
+            }
+
+            if (password.value == "" || password_confirmation.value == "") {
+                password_error.textContent = "Password required";
+                password.style.border = "1px solid red";
+                password_confirmation.style.border = "1px solid red";
+                password.focus();
+                return false;
+            }
+        }
+
+        function loginVerify() {
+            if (logemail.value != "") {
+                name_error.innerHTML = "";
+                logemail.style.border = "1px solid #110E0F";
+                console.log('burası')
+                return true;
+            }
+        }
+
+        function nameVerify() {
+            if (username.value != "") {
+                name_error.innerHTML = "";
+                username.style.border = "1px solid #110E0F";
+                return true;
+            }
+        }
+
+        function emailVerify() {
+            if (email.value != "") {
+                email_error.innerHTML = "";
+                email.style.border = "1px solid #110E0F";
+                return true;
+            }
+        }
+
+    </script>
+</body>
