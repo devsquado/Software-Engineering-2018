@@ -1,0 +1,140 @@
+body {
+    background-image: url(image/regpage_background.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    font: bold;
+}
+
+.right-bar {
+    position: absolute;
+    top: 15%;
+    left: 60%;
+    margin: 15px;
+    padding: 15px;
+    width: auto;
+    height: auto;
+    background-color: rgba(255, 255, 0, 0.4);
+    border: 10px solid rgba(0, 0, 0, 1);
+    border-radius: 10px;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 1);
+    margin: 1em 0;
+    padding: 0;
+}
+
+.left-bar {
+    position: absolute;
+    top: 15%;
+    left: 15%;
+    right: 40%;
+    margin: 15px;
+    padding: 15px;
+    height: auto;
+    background-color: rgba(255, 255, 0, 0.4);
+    border: 10px solid rgba(0, 0, 0, 1);
+    border-radius: 10px;
+}
+
+    .left-bar h1 {
+        font-family: Arial, Helvetica, sans-serif;
+        font-style: bold;
+        font-size: 30px;
+        text-align: center;
+        top: 0%;
+    }
+
+.logo {
+    position: absolute;
+    top: 2%;
+    left: 9%;
+}
+
+    .logo img {
+        width: 150px;
+        height: 150px;
+    }
+
+.input-box input[type=text], input[type=password], input[type=email] {
+    width: 360px;
+    padding: 15px;
+    display: block;
+    border-radius: 4px;
+    border-color: #DAA520;
+    background-color: rgba(255, 255, 255, 0.5);
+    margin: auto;
+}
+
+    .input-box input[type=text]:focus, input[type=password]:focus, input[type=email]:focus {
+        box-shadow: 0px 0px 20px;
+    }
+
+.input-reg {
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+
+.input-reg-radio {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.input-reg-checkbox {
+    margin-left: 5px;
+    margin-bottom: 20px;
+}
+
+.box-footer {
+    text-align: center;
+}
+
+.right-bar button {
+    font-family: "Roboto", sans-serif;
+    font: bold;
+    text-transform: uppercase;
+    outline: 0;
+    background: rgba(0, 0, 0, 1);
+    width: 50%;
+    border: 0;
+    padding: 15px;
+    color: rgba(255, 255, 255, 1);
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 15px;
+}
+
+.log-form message a {
+    text-decoration: none;
+}
+
+.log-form button:hover, .form button:active {
+    background: #FF8C00; /*#008B8B;*/
+}
+
+.log-form a:link, a:visited {
+    text-decoration: none;
+    color: #008B8B;
+}
+
+.reg-form message a {
+    text-decoration: none;
+}
+
+.reg-form button:hover, .form button:active {
+    background: #FF8C00;
+}
+
+.reg-form a:link, a:visited {
+    text-decoration: none;
+    color: #008B8B;
+}
+
+.reg-form {
+    display: none;
+}
