@@ -14,7 +14,7 @@ mongoose.connect('mongodb://localhost/usergo');
 
 Promise.promisifyAll(mongoose);
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/views'));
 
 app.set('view engine', 'html');
 app.engine('html', ejs.renderFile);
