@@ -59,7 +59,7 @@ var login = function (req, res, next) {
 
         req.session.user = user;
 
-        return res.status(200).send('giriş başarılı');
+        return res.redirect('/homepage');
       }
       return res.render('404');
 
@@ -71,13 +71,25 @@ var login = function (req, res, next) {
 }
 
 var logout = function (req, res) {
-  req.session.destroy();
+  
+  req.session.user = null; 
   return res.redirect('/');
 
 
 }
 
+var homepage = function (req, res) {
+    if (req.session.user != null) {
+        return res.render('hp');
+    }
 
+    else {
+        return res.render('index');
+    }
+
+}
+
+exports.homepage = homepage;
 exports.create = create;
 exports.login = login;
 exports.loginpage = loginpage;
