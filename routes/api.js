@@ -6,10 +6,10 @@ const router = express.Router();
 module.exports = (function() {
 
   router.post('/register', userCtrl.create);
-  //router.get('/usersList', userCtrl.reguser);
+  router.get('/homepage', userCtrl.homepage);
   router.post('/login', userCtrl.login);
   router.get('/loginpage', userCtrl.loginpage);
   router.get('/logout',userCtrl.logout);
-  //router.get('/chat', userCtrl.chat);
+  
 
   return router })();
