@@ -17,7 +17,7 @@
             <div class="logo">
             </div>
             <div class="us-R">
-                <h1>Wellcome To A-Chat</h1>
+                <h1>Welcome To A-Chat</h1>
                 <hr>
             </div>
         </div>
@@ -54,7 +54,7 @@
         </div>
     </form>
 
-    <form class="reg-form" method="POST" action="http://localhost:1234/register" onsubmit="return Validate()" name="vForm">
+    <form class="reg-form" method="POST" action="http://localhost:1234/register" onsubmit="return formValidation()" name="vForm">
         <div class="left-bar">
             <h1>Terms and Conditions</h1>
             <hr>
@@ -106,27 +106,18 @@
             <div class="input-box">
 
                 <div class="input-reg">
-                    <label for="fullname">
-                        <b>Full Name</b>
-                    </label>
-                    <input id="input-fullname" type="text" name="fullname">
-                    <div id="fullname_error" class="val_error"></div>
-                </div>
-
-                <div class="input-reg">
                     <label for="username">
                         <b>Username</b>
                     </label>
-                    <input id="input-username" type="text" name="username">
+                    <input id="input-username" type="text" name="username" placeholder="Should between 6 to 12 characters">
                     <div id="username_error" class="val_error"></div>
-                    <div id="username_error2" class="val_error"></div>
                 </div>
 
                 <div class="input-reg">
                     <label for="email">
                         <b>Email</b>
                     </label>
-                    <input id="input-email" type="text" name="email">
+                    <input id="input-email" type="text" name="email" placeholder="Enter valid email address">
                     <div id="email_error" class="val_error"></div>
                 </div>
 
@@ -134,16 +125,16 @@
                     <label for="password">
                         <b>Password</b>
                     </label>
-                    <input id="input-password" type="password" name="password">
-                    <div id="password2_error" class="val_error"></div>
+                    <input id="input-password" type="password" name="password" placeholder="Should between 6 to 16 characters">
+                    <div id="password_error" class="val_error"></div>
                 </div>
 
                 <div class="input-reg">
                     <label for="password-repeat">
                         <b>Confirm Password</b>
                     </label>
-                    <input id="input-password-confirmation" type="password" name="password_confirmation">
-                    <div id="password_error" class="val_error">
+                    <input id="input-password-confirmation" type="password" name="password_confirmation" placeholder="Type the password again">
+                    <div id="password_error2" class="val_error">
                     </div>
 
                     <div class="input-reg-radio">
@@ -152,12 +143,14 @@
 
                         <input type="radio" name="gender" id="female" value="female">
                         <label for="female">Female</label>
+                        <div id="gender_error" class="val_error"></div>
                     </div>
 
                     <div class="input-reg-checkbox">
                         <label>
-                            <input type="checkbox" />I Accept Terms and Conditions
+                            <input type="checkbox" id="terms"/>I Accept Terms and Conditions
                         </label>
+                        <div id="terms_error" class="val_error"></div>
                     </div>
 
                     <div class="box-footer">
@@ -168,6 +161,7 @@
                     </div>
                 </div>
             </div>
+        </div>
     </form>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -180,68 +174,154 @@
         var logemail = document.forms["vLogin"]["logemail"];
         var logpassword = document.forms["vLogin"]["logpassword"];
 
+        var username = document.getElementById('input-username');
+        var email = document.getElementById('input-email');
+        var password = document.getElementById('input-password');
+        var password_confirmation = document.getElementById('input-password-confirmation');
+        var gender_male = document.getElementById('male');
+        var gender_female = document.getElementById('female');
+        var terms = document.getElementById('terms');
 
-        var username = document.getElementById("input-username");
-        var email = document.getElementById("input-email");
-        var password = document.getElementById("input-password");
-        var password_confirmation = document.getElementById("input-password-confirmation");
-
-        var username_error = document.getElementById("username_error");
-        var username_error2 = document.getElementById("username_error2")
-        var email_error = document.getElementById("email_error");
-        var password_error = document.getElementById("password_error");
+        var fullname_error = document.getElementById('fullname_error');
+        var username_error = document.getElementById('username_error');
+        var email_error = document.getElementById('email_error');
+        var password_error = document.getElementById('password_error');
+        var password_error2 = document.getElementById('password_error2');
+        var gender_error = document.getElementById('gender_error');
+        var terms_error = document.getElementById('terms_error');
 
         username.addEventListener("blur", nameVerify, true);
         email.addEventListener("blur", emailVerify, true);
 
-        function Validate() {
-
+        function formValidation() {
+            var username_check = username_validation(username, 6, 12);
+            var email_check = email_validation(email);
+            var password_check = password_validation(password, 6, 16);
+            var password_retype_check = password_retype_validation(password, password_confirmation);
+            var gender_check = gender_validation(gender_male, gender_female);
+            var terms_check = terms_validation(terms);
             
-            if(usernameCheck(username, 5, 12));
-            
-            function usernameCheck(username, min_num, max_num){
-                if (username.value == "") {
-                username_error.textContent = "Username is required";
-                username.style.border = "2px solid red";
-                username.focus();
+            if(username_check == false || email_check == false || password_check == false || password_retype_check == false || gender_check == false || terms_check == false) {
                 return false;
             }
-                else if (username.value.length < min_num && username.value.length > max_num) {
-                    username_error2.textContent = "Username should between " + min_num + " - " + max_num + " characters";
-                    username.style.border = "2px solid red";
-                    username.focus();
-                    return false;
-                }
-                else{
-                    return true;
-                }
-            }
-            
-
-            if (email.value == "") {
-                email_error.textContent = "Email is required";
-                email.style.border = "2px solid red";
-                email.focus();
-                return false;
-            }
-
-            if (password.value != password_confirmation.value) {
-                password_error.textContent = "The two passwords do not match";
-                password.style.border = "2px solid red";
-                password_confirmation.style.border = "2px solid red";
-                password.focus();
-                return false;
-            }
-
-            if (password.value == "" || password_confirmation.value == "") {
-                password_error.textContent = "Password required";
-                password.style.border = "2px solid red";
-                password_confirmation.style.border = "2px solid red";
-                password.focus();
-                
-                return false;
+            else{ 
+                return true;
             }
         }
+
+        function username_validation(username, min_num, max_num) {
+            var username_length = username.value.length;
+            if(username.value == "") {
+                username_error.innerHTML = "Username is required";
+                username_error.style.color = "#FF0000";
+                username.style.border = "3px solid red";
+                return false;
+            }
+            else if(username_length < min_num || username_length > max_num){
+                username_error.innerHTML = "Username should contain " + min_num + " to " + max_num + " characters";
+                username_error.style.color = "#FF0000";
+                username.style.border = "3px solid red";
+                return false;
+            }
+            else{
+                username_error.innerHTML = "";
+                username.style.border = "2px solid black";
+                return true;
+            }
+        }
+
+        function email_validation(email) {
+            var mail_pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            if(email.value == ""){
+                email_error.innerHTML = "Email is required";
+                email_error.style.color = "#FF0000";
+                email.style.border = "3px solid red";
+                return false;
+            }
+            else if(!email.value.match(mail_pattern)){
+                email_error.innerHTML = "You should enter valid email address";
+                email_error.style.color = "#FF0000";
+                email.style.border = "3px solid red";
+                return false;
+            }
+            else{
+                email_error.innerHTML = "";
+                email.style.border = "2px solid black";
+                return true;
+            }
+        }
+
+
+        function password_validation(password, min_num, max_num) {
+            var password_length = password.value.length;
+            if(password.value == "") {
+                password_error.innerHTML = "Password is required";
+                password_error.style.color = "#FF0000";
+                password.style.border = "3px solid red";
+                return false;
+            }
+            else if(password_length < min_num || password_length > max_num){
+                password_error.innerHTML = "Password should contain " + min_num + " to " + max_num + " characters";
+                password_error.style.color = "#FF0000";
+                password.style.border = "3px solid red";
+                return false;
+            }
+            else{
+                password_error.innerHTML = "";
+                password.style.border = "2px solid black";
+                return true;
+            }
+        }
+
+        function password_retype_validation(password, password_confirmation){
+            if(password.value != password_confirmation.value){
+                password_error2.innerHTML = "Passwords do not match";
+                password_error2.style.color = "#FF0000";
+                password.style.border = "3px solid red";
+                password_confirmation.style.border = "3px solid red";
+                return false;
+            }
+            else if(password.value == ""){
+                password_confirmation.style.border = "3px solid red";
+                return false;
+            }
+            else{
+                password_error2.innerHTML = "";
+                password_confirmation.style.border = "2px solid black";
+                return true;
+            }
+        }
+
+        function gender_validation(gender_male, gender_female) {
+            if(gender_male.checked || gender_female.checked){
+                gender_error.innerHTML = "";
+                return true;   
+            }
+            else{
+                gender_error.innerHTML = "Select your gender";
+                gender_error.style.color = "#FF0000";
+                return false;
+            }
+
+
+        }
+        
+        function terms_validation(terms) {
+            if(!terms.checked){
+                terms_error.innerHTML = "You must accept Terms and Conditions";
+                terms_error.style.color = "#FF0000";
+                return false;
+            }
+            else{
+                terms_error.innerHTML = "";
+                return true;
+            }
+
+        }
+        
+        
+        
+        
 
         function loginVerify() {
             if (logemail.value != "") {
@@ -254,7 +334,6 @@
         function nameVerify() {
             if (username.value != "") {
                 username_error.innerHTML = "";
-                username.style.border = "2px solid #110E0F";
                 return true;
             }
         }
@@ -262,7 +341,6 @@
         function emailVerify() {
             if (email.value != "") {
                 email_error.innerHTML = "";
-                email.style.border = "2px solid #110E0F";
                 return true;
             }
         }

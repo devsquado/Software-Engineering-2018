@@ -30,9 +30,12 @@
       }
 
       body {
-        background-color: #F8F8F8;
-        font-family: 'Proxima Nova';
-      }
+        background-image: url(image/regpage_background.jpg);
+        background-repeat: no-repeat;
+        background-size: 100%;
+        font-family: Arial, Helvetica, sans-serif;
+        font: bold;
+        }
 
       hr {
         border: 1px solid #E7E7E7;
@@ -44,12 +47,13 @@
         padding-bottom: 0;
         box-sizing: border-box;
         text-align: center;
-        background-color: white;
-        border: 1px solid #D4D4D4;
+        background-color: rgba(0, 0, 0, 0.4);
+        border: 2px solid gray;
         height: 335px;
         width: 484px;
+        border-radius: 50%;
         margin: 0 auto;
-        margin-top: 10%;
+        margin-top: 12%;
         -webkit-box-shadow: 0px 0px 41px -8px rgba(237, 234, 237, 1);
         -moz-box-shadow: 0px 0px 41px -8px rgba(237, 234, 237, 1);
         box-shadow: 0px 0px 41px -8px rgba(237, 234, 237, 1);
@@ -57,20 +61,20 @@
 
       .header {
         margin: 26px 0 0 0;
-        color: #363B3E;
+        color: #ffffff;
         font-size: 45px;
         font-weight: 500;
       }
 
       .error {
         margin: 0 0 0 0;
-        color: #9BA0A3;
+        color: #ffffff;
         margin-bottom: 35px;
       }
 
       .check-url,
       .otherwise {
-        color: #666C70;
+        color: #ffffff;
       }
 
       .check-url {
@@ -99,7 +103,7 @@
       }
 
       a {
-        color: #2990EA;
+        color: #ffa31a;
         text-decoration: inherit;
       }
 
@@ -115,12 +119,12 @@
   <body>
     <div class="warning-container">
       <h2 class="header">404</h2>
-      <p class="error">Hata - Sayfa Bulunamadı</p>
+      <p class="error">Page not found</p>
       <hr>
       <div class="bottom-content">
         <span>
-				<p class="check-url"><%= hata_kodu %></p>
-				<p class="otherwise">Veya ana sayfaya yönlendirilmek için <a href="/">buraya tıklayın</a>.</p>
+				<p class="check-url">The page you are looking for doesn't exist or another error occured.</p>
+				<p class="otherwise">Go home by <a href="hp.html">clicking here.</a>.</p>
 			</span>
       </div>
     </div>
