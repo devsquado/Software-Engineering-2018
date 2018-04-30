@@ -10,6 +10,7 @@ module.exports = (function() {
   router.post('/login', userCtrl.login);
   router.get('/loginpage', userCtrl.loginpage);
   router.get('/logout',userCtrl.logout);
+  router.get('/profile', userCtrl.profile);
   
 
   return router })();
