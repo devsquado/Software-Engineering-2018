@@ -34,6 +34,21 @@ var create = function (req, res, next) {
 
 };
 
+
+var profile = function (req, res) {
+  var name = req.session.user.name;
+  Usermodel.findOne({ name:name }, function(err, user) {
+    if (user) {
+      return res.render('profile_about', {
+        pname : user.name
+      });
+    }
+  })  
+}
+
+
+
+
 var login = function (req, res, next) {
 
   //var logusername= req.body.username;
@@ -90,6 +105,7 @@ var homepage = function (req, res) {
 }
 
 exports.homepage = homepage;
+exports.profile = profile;
 exports.create = create;
 exports.login = login;
 exports.loginpage = loginpage;
