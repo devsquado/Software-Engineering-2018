@@ -31,21 +31,26 @@
             <span><p>&copy; 2018</p></span>
         </div>
         <div class="account_settings">
-            <h2>Account Settings</h2><hr width="12%">
-            <form class="account_settings_form" method="POST" onsubmit="return formValidation()" name="profileForm">
+            <h2>Account Settings</h2><hr class="title-line" width="12%">
+            <form class="account_settings_form" method="POST" onsubmit="return usernameValidation()" name="usernameForm">
+                <div class="setting-title"><b>CHANGE USERNAME</b></div><hr class="title-line" width="8%">
                 <div class="input-account-settings">    
                     <label for="new-username">
-                        <b>Username</b>
+                        <b>New Username</b>
                     </label>
                     <input id="input-new-username" type="text" name="new-username" placeholder="Should between 6 to 12 characters">
                     <div id="username_error" class="val_error"></div>
+                    <button type="submit">Update Username</button>
                 </div>
+            </form>
+            <form class="account_settings_form" method="POST" onsubmit="return passwordValidation()" name="passwordForm">
+                <div class="setting-title"><b>CHANGE PASSWORD</b></div><hr class="title-line" width="8%">
                 <div class="input-account-settings"> 
                     <label for="current-password">
-                        <b>Old Password</b>
+                        <b>Current Password</b>
                     </label>
                     <input id="input-current-password" type="password" name="current-password" placeholder="Enter your current password">
-                    <div id="old_password_error" class="val_error"></div>
+                    <div id="current_password_error" class="val_error"></div>
                 </div>
                 <div class="input-account-settings"> 
                     <label for="new-password">
@@ -56,13 +61,13 @@
                 </div>
                 <div class="input-account-settings"> 
                     <label for="repeat-new-password">
-                        <b>Repeat New Password</b>
+                        <b>Re-type New Password</b>
                     </label>
                     <input id="input-repeat-new-password" type="password" name="repeat-new-password" placeholder="Should between 6 to 16 characters">
                     <div id="password_error2" class="val_error"></div>
                 </div>
                 <div class="input-account-settings"> 
-                <button type="submit">Update</button>
+                <button type="submit">Update Password</button>
                 </div>
             </form>
         </div>
@@ -70,18 +75,31 @@
     <script>
 
         var username = document.getElementById('input-new-username');
+        var current_password = document.getElementById('input-current-password');
         var password = document.getElementById('input-new-password');
         var password_confirmation = document.getElementById('input-repeat-new-password');
 
+        var current_password_error = document.getElementById('current_password_error');
         var password_error = document.getElementById('password_error');
         var password_error2 = document.getElementById('password_error2');
 
-        function formValidation() {
-            var username_check = username_validation(username, 6, 12);
+        function passwordValidation() {
+            var current_password_check = current_password_validation(password, 6, 16);
             var password_check = password_validation(password, 6, 16);
             var password_retype_check = password_retype_validation(password, password_confirmation);
             
-            if(username_check == false || password_check == false || password_retype_check == false) {
+            if(current_password_check == false || password_check == false || password_retype_check == false) {
+                return false;
+            }
+            else{ 
+                return true;
+            }
+        }
+
+        function usernameValidation() {
+            var username_check = username_validation(username, 6, 12);
+            
+            if(username_check == false) {
                 return false;
             }
             else{ 
@@ -110,10 +128,32 @@
             }
         }
 
+
+         function current_password_validation(password, min_num, max_num) {
+            var current_password_length = current_password.value.length;
+            if(password.value == "") {
+                current_password_error.innerHTML = "Current password is required";
+                current_password_error.style.color = "#FF0000";
+                current_password.style.border = "3px solid red";
+                return false;
+            }
+            else if(password_length < min_num || password_length > max_num){
+                current_password_error.innerHTML = "Password should contain " + min_num + " to " + max_num + " characters";
+                current_password_error.style.color = "#FF0000";
+                current_password.style.border = "3px solid red";
+                return false;
+            }
+            else{
+                current_password_error.innerHTML = "";
+                current_password.style.border = "2px solid black";
+                return true;
+            }
+        }
+        
         function password_validation(password, min_num, max_num) {
             var password_length = password.value.length;
             if(password.value == "") {
-                password_error.innerHTML = "Password is required";
+                password_error.innerHTML = "New password is required";
                 password_error.style.color = "#FF0000";
                 password.style.border = "3px solid red";
                 return false;
@@ -140,7 +180,7 @@
                 return false;
             }
             else if(password_confirmation.value == ""){
-                password_error2.innerHTML = "Retype password";
+                password_error2.innerHTML = "Re-type password";
                 password_error2.style.color = "#FF0000";
                 password_confirmation.style.border = "3px solid red";
                 return false;

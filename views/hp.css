@@ -84,4 +84,7 @@ section.sec1 {
 }
 .content {
     margin-top: 80px;
+    position: fixed;
+    top: 40%;
+    left: 30%;
 }

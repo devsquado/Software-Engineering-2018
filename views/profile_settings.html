@@ -33,7 +33,7 @@
         <div class="profile_settings">
             <h2>Profile Settings</h2><hr width="12%">
             <img alt="profile_image_holder" src="image/profile_image_sample.png" style="width:2 00px;height:200px;">
-            <form class="profile_settings_form" method="POST" onsubmit="return formValidation()" name="profileForm">
+            <form class="profile_settings_form" onsubmit="return getContent()" name="profileForm">
                 <div class="input-profile-settings">
                     <input type="file" class="file-container">
                 </div>
@@ -41,7 +41,7 @@
                     <label for="interests">
                         <b>Interests</b><br>
                     </label>
-                    <textarea name="text-area-interests" class="input-textarea"rows="10" cols="70"></textarea>
+                    <textarea name="textarea-interests" id="textarea-int" class="input-textarea"rows="10" cols="70"></textarea>
                 </div>
                 <div class="input-profile-settings"> 
                     <button type="submit">Save</button>
@@ -49,5 +49,12 @@
             </form>
         </div>
     </div>
+
+    <script>
+        var interests = document.getElementById("textarea-int");
+        function getContent(){
+        interests.innerHTML = "Hello";
+        }
+    </script>
 </body>
 </html>
