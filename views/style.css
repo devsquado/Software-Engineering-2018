@@ -2,6 +2,9 @@ body {
     background-image: url(image/regpage_background.jpg);
     background-repeat: no-repeat;
     background-size: 100%;
+    -webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
     font-family: Arial, Helvetica, sans-serif;
     font: bold;
 }

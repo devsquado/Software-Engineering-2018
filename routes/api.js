@@ -11,6 +11,9 @@ module.exports = (function() {
   router.get('/loginpage', userCtrl.loginpage);
   router.get('/logout',userCtrl.logout);
   router.get('/profile', userCtrl.profile);
+  router.get('/account_settings', userCtrl.account_settings);
+  router.get('/profile_settings', userCtrl.profile_settings);
+  router.get('/contact', userCtrl.contact);
   
 
   return router })();

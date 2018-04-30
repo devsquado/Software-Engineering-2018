@@ -104,9 +104,45 @@ var homepage = function (req, res) {
 
 }
 
+var account_settings = function (req, res) {
+  var name = req.session.user.name;
+  Usermodel.findOne({ name:name }, function(err, user) {
+    if (user) {
+      return res.render('account_settings', {
+        pname : user.name
+      });
+    }
+  })  
+}
+
+var contact = function (req, res) {
+  var name = req.session.user.name;
+  Usermodel.findOne({ name:name }, function(err, user) {
+    if (user) {
+      return res.render('profile_contact', {
+        pname : user.name
+      });
+    }
+  })  
+}
+
+var profile_settings = function (req, res) {
+  var name = req.session.user.name;
+  Usermodel.findOne({ name:name }, function(err, user) {
+    if (user) {
+      return res.render('profile_settings', {
+        pname : user.name
+      });
+    }
+  })  
+}
+
 exports.homepage = homepage;
 exports.profile = profile;
 exports.create = create;
 exports.login = login;
 exports.loginpage = loginpage;
 exports.logout = logout;
+exports.account_settings = account_settings;
+exports.contact = contact;
+exports.profile_settings = profile_settings;
