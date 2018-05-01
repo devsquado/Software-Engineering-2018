@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -15,16 +14,6 @@
                 $('nav').removeClass('black');
             }
         })
-        $(document).ready(function() {
-            $(".new-topic-btn").on('click', function(){
-                $(".cover").fadeIn('slow');
-                $(".popup").fadeIn('slow');
-            });
-            $(".cover").on('click', function(){
-                $(".cover").fadeOut('slow');
-                $(".popup").fadeOut('slow');
-            });
-        });
     </script>
 </head>
 <body>
@@ -41,35 +30,7 @@
             </ul>
         </nav>
     </div>
-    <div class="new-topic">
-        <button class="new-topic-btn">New Main</button>
-        <div class="popup">
-            <div class="create-main"></div>
-                <p>Enter New Main Name:</p>
-                <div class="input-reg">
-                        <input type="text" placeholder="Main Name" name="topicname" required>
-                </div>
-                <div class="input-reg">
-                    <input type="text" placeholder="Meta Tags" name="Tags" required>
-                </div>
-                <div class="popup-options">
-                    <a href="" class="popup-cancel">Cancel</a>
-                    <a href="" class="popup-create" id="close">Create</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="cover"></div>
-    <div class="topics">
-        <div class="mini-box-ans"><a href="/main">MAIN 1</a></div>
-        <div class="mini-box-ans"><a href="/main">MAIN 2</a></div>
-        <div class="mini-box-ans"><a href="/main">MAIN 3</a></div>
-        <div class="mini-box-ans"><a href="/main">MAIN 4</a></div>
-        <div class="mini-box-ans"><a href="/main">MAIN 5</a></div>
-        <div class="mini-box-ans"><a href="/main">MAIN 6</a></div>
-        <div class="mini-box-ans"><a href="/main">MAIN 7</a></div>
-        <div class="mini-box-ans"><a href="/main">MAIN 8</a></div>
-    </div>
+
     <!------
     <div class="sec1"></div>
     <div class="content">

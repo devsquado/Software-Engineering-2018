@@ -5,12 +5,12 @@
     background: url(image/regpage_background.jpg);
     
 }
-.new-main {
+.new-topic {
     margin: 0 auto;
     text-align: center;
     text-transform: uppercase;
 }
-.mains {
+.topics {
     background-color: rgba(255, 255, 255, 0.4);
     display: block;
     position: absolute;
@@ -20,7 +20,7 @@
     right: 12%;
     top: 20%;
 }
-.mains a{
+.topics a{
     text-transform: uppercase;
     text-decoration: none;
     text-align: center;
@@ -28,7 +28,7 @@
     margin: 10px;
     font-weight: bold;
 }
-.mains a:link{
+.topics a:link{
     color: #FF8C00;
 }
 .mini-box-ans{
@@ -42,7 +42,16 @@
     text-transform: uppercase;
     border: 1px solid rgba(0, 0, 0, 1);
 }
-.new-main button {
+.new-topic .main-name {
+    position: absolute;
+    right: 80%;
+    top: 15%;
+    padding: 10px 15px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.new-topic button {
     position: absolute;
     left: 80%;
     top: 15%;
@@ -53,19 +62,24 @@
     border-color: #DAA520;
     font-weight: bold;
 }
-.popup {
+.create-main {
     width: 400px;
-    height: 260px;
+}
+.create-topic {
+    width: 500px;
+}
+.popup {
     position: absolute;
     display: none;
     z-index: 1000;
     top: 30%;
     left: 35%;
     margin: 0 auto;
-    background-color: rgba(75, 100, 200, 0.5);
+    background-color: rgba(75, 100, 200, 0.8);
 }
 .popup p {
     font-size: 20px;
+    color: #fff;
     padding: 10px;
 }
 .popup a {
@@ -79,7 +93,7 @@
     padding: 10px;
 }
 .popup .input-reg input {
-    width: 300px;
+    width: 400px;
     padding: 15px;
     display: block;
     border-radius: 4px;
@@ -88,13 +102,21 @@
     margin: auto;
     text-transform: uppercase;
 }
+.popup .input-reg textarea{
+    resize:none;
+    width: 400px;
+    padding: 15px;
+    border-radius: 4px;
+    border-color: #DAA520;
+    background-color: rgba(255, 255, 255, 0.5);
+}
 .popup .popup-options {
     position: relative;
     left: 0%;
     right: 0%;
     bottom: 0%;
     padding: 60px 0px;
-    width: %100;
+    width: 100%;
 }
 .popup .popup-options a:first-child {
     float: left;
