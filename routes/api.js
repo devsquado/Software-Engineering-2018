@@ -15,7 +15,7 @@ module.exports = (function() {
   router.get('/profile_settings', userCtrl.profile_settings);
   router.get('/contact', userCtrl.contact);
   router.get('/main', userCtrl.main);
-  router.get('/topic', userCtrl.main);
+  router.get('/topic', userCtrl.topic);
   
 
   return router })();
