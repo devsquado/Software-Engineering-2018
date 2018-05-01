@@ -2,7 +2,119 @@
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
+    background: url(image/regpage_background.jpg);
     
+}
+.new-main {
+    margin: 0 auto;
+    text-align: center;
+    text-transform: uppercase;
+}
+.mains {
+    background-color: rgba(255, 255, 255, 0.4);
+    display: block;
+    position: absolute;
+    padding: 15px;
+    border: 2px solid rgba(0, 0, 0, 1);
+    left: 12%;
+    right: 12%;
+    top: 20%;
+}
+.mains a{
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    padding: 15px 10px;
+    margin: 10px;
+    font-weight: bold;
+}
+.mains a:link{
+    color: #FF8C00;
+}
+.mini-box-ans{
+    background-color: rgba(255, 255, 255, 0.5);
+    display: inline-block;
+    position: relative;
+    width: 46%;
+    margin: 5px;
+    padding: 15px;
+    text-align: center;
+    text-transform: uppercase;
+    border: 1px solid rgba(0, 0, 0, 1);
+}
+.new-main button {
+    position: absolute;
+    left: 80%;
+    top: 15%;
+    padding: 10px 15px;
+    color: #DAA520;
+    background-color:  rgba(0, 0, 0, 1);
+    text-transform: uppercase;
+    border-color: #DAA520;
+    font-weight: bold;
+}
+.popup {
+    width: 400px;
+    height: 260px;
+    position: absolute;
+    display: none;
+    z-index: 1000;
+    top: 30%;
+    left: 35%;
+    margin: 0 auto;
+    background-color: rgba(75, 100, 200, 0.5);
+}
+.popup p {
+    font-size: 20px;
+    padding: 10px;
+}
+.popup a {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #fff;
+    text-align: center;
+    padding: 15px 0px;
+}
+.popup .input-reg {
+    padding: 10px;
+}
+.popup .input-reg input {
+    width: 300px;
+    padding: 15px;
+    display: block;
+    border-radius: 4px;
+    border-color: #DAA520;
+    background-color: rgba(255, 255, 255, 0.5);
+    margin: auto;
+    text-transform: uppercase;
+}
+.popup .popup-options {
+    position: relative;
+    left: 0%;
+    right: 0%;
+    bottom: 0%;
+    padding: 60px 0px;
+    width: %100;
+}
+.popup .popup-options a:first-child {
+    float: left;
+    width: 50%;
+    background-color: rgba(0, 0, 0, 1);
+}
+.popup .popup-options a:last-child {
+    float: right;
+    width: 50%;
+    background-color: #FF8C00;
+}
+.cover {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.5)
 }
 nav {
     position: fixed;

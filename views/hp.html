@@ -15,9 +15,20 @@
                 $('nav').removeClass('black');
             }
         })
+        $(document).ready(function() {
+            $(".new-main-btn").on('click', function(){
+                $(".cover").fadeIn('slow');
+                $(".popup").fadeIn('slow');
+            });
+            $(".cover").on('click', function(){
+                $(".cover").fadeOut('slow');
+                $(".popup").fadeOut('slow');
+            });
+        });
     </script>
 </head>
 <body>
+    
     <div class="wrapper">
         <nav>
             <div class="logo"><a href="/homepage">A-CHAT</a></div>
@@ -30,7 +41,31 @@
             </ul>
         </nav>
     </div>
-    
+    <div class="new-main">
+        <button class="new-main-btn">New Main</button>
+        <div class="popup">
+            <p>Enter New Main Name:</p>
+            <div class="input-reg">
+                    <input type="text" placeholder="Main Name" name="topicname" required>
+            </div>
+            <div class="popup-options">
+                <a href="" class="popup-cancel">Cancel</a>
+                <a href="" class="popup-create" id="close">Create</a>
+            </div>
+        </div>
+    </div>
+    <div class="cover"></div>
+    <div class="mains">
+        <div class="mini-box-ans"><a href="#">DENEME</a></div>
+        <div class="mini-box-ans"><a href="#">DENEME</a></div>
+        <div class="mini-box-ans"><a href="#">DENEME</a></div>
+        <div class="mini-box-ans"><a href="#">DENEME</a></div>
+        <div class="mini-box-ans"><a href="#">DENEME</a></div>
+        <div class="mini-box-ans"><a href="#">DENEME</a></div>
+        <div class="mini-box-ans"><a href="#">DENEME</a></div>
+        <div class="mini-box-ans"><a href="#">DENEME</a></div>
+    </div>
+    <!------
     <div class="sec1"></div>
     <div class="content">
         <p id="messages"></p>
@@ -90,5 +125,6 @@
             imageButton.onclick = imageClicked;
         </script>
     </div>
+    ------>
 </body>
 </html>
