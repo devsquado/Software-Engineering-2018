@@ -10,8 +10,8 @@
 <body>
     <div class="wrapper">
         <nav>
-            <div class="logo">A-CHAT</div>
-            <div class="avatar"><img src="image/img_avatar.png" alt="Avatar"></div>
+            <div class="logo"><a href="/homepage">A-CHAT</a></div>
+            <div class="avatar"><a href="profile"><img src="image/img_avatar.png" alt="Avatar"></a></div>
             <ul>
                 <li><a class="active" href="/homepage">Home</a></li>
                 <li><a href="/profile">Profile</a></li>
@@ -23,9 +23,9 @@
     <div class="content">
         <div class="profile_contents">
             <ul>
+                <li><a href="profile">Profile</a></li>
                 <li><a href="profile_settings">Profile Settings</a></li>
                 <li><a href="account_settings">Account Settings</a></li>  
-                <li><a href="profile">About</a></li>
                 <li><a href="contact">Contact</a></li>
             </ul>
         </div>
@@ -35,16 +35,30 @@
                     <img src="image/img_avatar.png" alt="Avatar" width="200" height="200">
                 </div>
             </div>
+            <div class="mini_box_ans" display>
+                <table>
+                        <tr>
+                            <td>
+                                USERNAME:
+                            </td>
+                        <td>
+                            <div id="profile-username" class="username-info"><span class="a"><%= pname %></span></div>
+                        </td>
+                    </tr>
+                </table> 
+            </div>
+            <div class="mini_box_otr">
+                E-Mail:
+            </div>
+            <div class="mini_box_otr">
+                    else..
+            </div>
             <div class="mini_box_ans">
-                USERNAME:<div id="profile-username" class="username-info"><span class="a">
-                    <%= pname %> 
-                </span></div><br>
+                interests:
             </div>
-            <div class="mini_box_otr">
-                E-Mail:<br>
+            <div class="mini_box_ans">
+                friends:
             </div>
-            <div class="mini_box_otr">
-                    else..<br>
             </div>
         </div>
     </div>

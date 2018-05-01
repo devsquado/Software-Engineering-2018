@@ -15,6 +15,11 @@ nav {
     transition: .3s;
     background: black;
 }
+a:-webkit-any-link {
+    color: #c18920;
+    cursor: pointer;
+    text-decoration: underline;
+}
 nav .avatar {
     margin: 0;
     padding: 0;
@@ -188,6 +193,7 @@ section.sec1 {
 }
 .input-textarea{
     resize:none;
+    background-color: rgba(255, 255, 255, 0.5);
 }
 .setting-title {
     text-align: center;
@@ -211,6 +217,7 @@ section.sec1 {
 }
 
 .mini_box_ans{
+    background-color: rgba(255, 255, 255, 0.5);
     display: inline-block;
     position: relative;
     margin: 15px;
@@ -220,6 +227,7 @@ section.sec1 {
 }
 
 .mini_box_otr{
+    background-color: rgba(255, 255, 255, 0.5);
     display: block;
     position: relative;
     margin: 15px;
