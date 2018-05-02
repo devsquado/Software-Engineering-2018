@@ -11,19 +11,26 @@
         <h1 style="text-align:center">Reset Your Password</h1>
         <hr>
         <div class="input-box">
-            <form class="new-password-form" action="http://localhost:1234/new_pass" method="POST" onsubmit="return formValidation()"></form>
+            <form class="new-password-form" action="http://localhost:1234/new_pass" method="POST" onsubmit="return formValidation()">
                 <div class="input-reg">
-                    <label for="email"><b>Enter Your New Password</b></label>
-                    <input type="password" placeholder="Password" name="password" id="input-password" required>
+                    <label for="password"><b>Enter Your New Password</b></label>
+                    <input type="password" placeholder="Password" name="password" id="input-password">
                     <div id="password_error" class="val_error"></div>
                 </div>
                 <div class="input-reg">
-                    <label for="password-repeat">
+                    <label for="password-confirmation">
                         <b>Confirm Password</b>
                     </label>
                     <input id="input-password-confirmation" type="password" name="password_confirmation" placeholder="Re-type Password">
-                    <div id="password_error2" class="val_error">
-                    </div>
+                    <div id="password_error2" class="val_error"></div>
+                </div>
+                <div class="input-reg">
+                    <label for="token">
+                        <b>Enter Token</b>
+                    </label>
+                    <input id="input-token" type="text" name="token" placeholder="Enter Token URL">
+                    <div id="token_error" class="val_error"></div>
+                </div>
                 <hr>
                 <div class="box-footer">
                     <button type="submit">RESET</button>
@@ -36,21 +43,21 @@
     <script>
         var password = document.getElementById('input-password');
         var password_confirmation = document.getElementById('input-password-confirmation');
+        var token = document.getElementById('input-token')
  
         var password_error = document.getElementById('password_error');
         var password_error2 = document.getElementById('password_error2');
+        var token_error = document.getElementById('token_error');
 
         function formValidation() {
             var password_check = password_validation(password, 6, 16);
             var password_retype_check = password_retype_validation(password, password_confirmation);
-            
-            if(password_check == false || password_retype_check == false)    {
+            var token_check = token_validation(token);
+
+            if(password_check == false || password_retype_check == false || token_check == false)    {
                 return false;
-                console.log("a");
-                
             }
             else{ 
-                console.log("a");
                 return true;
             }
         }
@@ -91,6 +98,20 @@
             else{
                 password_error2.innerHTML = "";
                 password_confirmation.style.border = "2px solid black";
+                return true;
+            }
+        }
+
+        function token_validation(token){
+            if(token.value == ""){
+                token_error.innerHTML = "Token is required";
+                token_error.style.color = "#FF0000";
+                token.style.border = "3px solid red";
+                return false;
+            }
+            else{
+                token_error.innerHTML = "";
+                token.style.border = "2px solid black";
                 return true;
             }
         }
