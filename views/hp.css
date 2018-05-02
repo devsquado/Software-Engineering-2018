@@ -123,8 +123,9 @@
     width: 50%;
     background-color: rgba(0, 0, 0, 1);
 }
-.popup .popup-options a:last-child {
+.popup .popup-options .create-topic-button{
     float: right;
+    padding: 15px 0px;
     width: 50%;
     background-color: #FF8C00;
 }

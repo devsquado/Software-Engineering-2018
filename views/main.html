@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -48,35 +48,79 @@
         <button class="new-topic-btn">New Topic</button>
         <div class="popup">
             <div class="create-topic">
-                <p>Enter New Topic Name:</p>
-                <div class="input-reg">
-                        <input type="text" placeholder="Topic Name" name="topicname" required>
-                </div>
-                <div class="input-reg">
-                    <input type="text" placeholder="Meta Tags" name="Tags" required>
-                </div>
-                <div class="input-reg">
-                    <textarea name="textarea-about-topic" id="textarea-at" rows="10" cols="80" placeholder="WHAT THIS TOPIC WITH ABOUT"></textarea>
-                </div>
-                <div class="popup-options">
-                    <a href="" class="popup-cancel">Cancel</a>
-                    <a href="" class="popup-create" id="close">Create</a>
-                </div>
+                <form action="/topics" method="POST">
+                    <p>Enter New Topic Name:</p>
+                    <div class="input-reg">
+                            <input type="text" placeholder="Topic Name" name="topicname" id="sub-topic-name"required>
+                            <div id="sub-topic-error" class="val_error"></div>
+                    </div>
+                    <div class="input-reg">
+                        <input type="text" placeholder="Meta Tags" name="Tags" id="sub-topic-tags"required>
+                    </div>
+                    <div class="input-reg">
+                        <textarea name="textarea-about-topic" id="textarea-at" rows="10" cols="80" placeholder="WHAT THIS TOPIC WITH ABOUT"></textarea>
+                    </div>
+                    <div class="popup-options">
+                        <a href="" class="popup-cancel">Cancel</a>
+                        <input type="button" onclick="validityCheck()" value="Create" class="create-topic-button">
+                    </div>
+                </form>
             </div>
         </div>
     </div>
     <div class="cover"></div>
     <div class="topics">
-        <div class="mini-box-ans"><a href="/topic">TOPIC 1</a></div>
-        <div class="mini-box-ans"><a href="/topic">TOPIC 2</a></div>
-        <div class="mini-box-ans"><a href="/topic">TOPIC 3</a></div>
-        <div class="mini-box-ans"><a href="/topic">TOPIC 4</a></div>
-        <div class="mini-box-ans"><a href="/topic">TOPIC 5</a></div>
-        <div class="mini-box-ans"><a href="/topic">TOPIC 6</a></div>
-        <div class="mini-box-ans"><a href="/topic">TOPIC 7</a></div>
-        <div class="mini-box-ans"><a href="/topic">TOPIC 8</a></div>
+        <ul id="topics-list"></ul>
     </div>
-    <!------
+    <script>
+            var list = document.getElementById("topics-list");
+            var topicsArray = [];
+            
+            function addTopic(){
+                var subtopic_name = document.getElementById('sub-topic-name').value;
+                var subtopic_link = document.createElement("a");
+                var entry = document.createElement("li");
+     
+                entry.className = "mini-box-ans";
+                entry.appendChild(subtopic_link);
+                subtopic_link.innerHTML = subtopic_name;
+                topicsArray.push(entry.textContent);
+                list.appendChild(entry);   
+            }
+    
+            function validityCheck(){
+                var subtopic_name = document.getElementById('sub-topic-name').value;
+                var subtopic_error = document.getElementById('sub-topic-error');
+            
+                var subtopic_name_check = subtopicNameCheck(subtopic_name, subtopic_error); 
+                if(subtopic_name_check == false) {
+                    return false;
+                }
+                else { 
+                    addTopic();
+                    return true;
+                }    
+            }
+            
+            function subtopicNameCheck(subtopic_name, subtopic_error){
+            if(subtopic_name == ""){
+                subtopic_error.innerHTML = "Topic Name is required";
+                subtopic_error.style.color = "#FF0000";
+                return false;    
+            }
+            else if(topicsArray.includes(subtopic_name)){
+                subtopic_error.innerHTML = "You already entered this topic";
+                subtopic_error.style.color = "#FF0000";
+                return false;   
+            }
+            else{
+                return true;
+            }
+        }
+            
+    
+        </script>
+    <!--
     <div class="sec1"></div>
     <div class="content">
         <p id="messages"></p>
@@ -87,7 +131,6 @@
             var submitButton = document.getElementById("submit-message");
             var imageButton = document.getElementById("submit-image");
             var postArray = [];
-
             function addToArray(){
                 var message = document.getElementById("message-input").value; 
                 if(message.length == ""){
@@ -97,7 +140,6 @@
                     postArray.push(message);
                 }
             }
-
             function addImageToArray(){
                 var image = document.getElementById("message-input").value;
                 if(image.length == ""){
@@ -107,7 +149,6 @@
                 postArray.push("<img src=" + image + "></img>");
                 }
             }
-
             function printArray(){
                 var posts = "";
                 for(i = 0; i < postArray.length; i++){
@@ -115,13 +156,11 @@
                 }
                 document.getElementById("messages").innerHTML = posts;
             }
-
             function submitClicked() {
                 addToArray();
                 printArray();
                 clearText();
             }
-
             function imageClicked() {
                 addImageToArray();
                 printArray();
@@ -131,11 +170,10 @@
             function clearText() {
                 document.getElementById("message-input").value = "";
             }
-
             submitButton.onclick = submitClicked;
             imageButton.onclick = imageClicked;
         </script>
     </div>
-    ------>
+    -->
 </body>
 </html>
