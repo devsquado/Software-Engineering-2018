@@ -123,7 +123,17 @@ button {
     border-color: #DAA520;
     font-weight: bold;
 }
-.content textarea{
+.content input[type=submit] {
+    float: right;
+    margin-top: 10px;
+    padding: 10px 15px;
+    color: #DAA520;
+    background-color:  rgba(0, 0, 0, 1);
+    text-transform: uppercase;
+    border-color: #DAA520;
+    font-weight: bold;
+}
+.content input[type=text]{
     display: block;
     resize:none;
     width: 100%;
