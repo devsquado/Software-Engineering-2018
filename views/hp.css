@@ -1,4 +1,4 @@
-﻿body {
+body {
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
@@ -118,12 +118,14 @@
     padding: 60px 0px;
     width: 100%;
 }
-.popup .popup-options a:first-child {
+.popup .popup-options input:first-child {
     float: left;
+    padding: 15px 0px;
     width: 50%;
+    color: #fff;
     background-color: rgba(0, 0, 0, 1);
 }
-.popup .popup-options .create-topic-button{
+.popup .popup-options input:last-child {
     float: right;
     padding: 15px 0px;
     width: 50%;
