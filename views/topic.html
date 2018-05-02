@@ -37,7 +37,6 @@
                 var submitButton = document.getElementById("submit-message");
                 var imageButton = document.getElementById("submit-image");
                 var postArray = [];
-
                 function addToArray(){
                     var message = document.getElementById("message-input").value; 
                     if(message.length == ""){
@@ -47,7 +46,6 @@
                         postArray.push("<table><tr><td><div id="+"profile-username"+" class="+"username-info"+"><span class="+"a"+"><%= pname %></span></td><td><strong><p>:   </p></strong></div></td><td>" + message + "</td></tr></table><hr>");
                     }
                 }
-
                 function addImageToArray(){
                     var image = document.getElementById("message-input").value;
                     if(image.length == ""){
@@ -57,7 +55,6 @@
                     postArray.push("<img src=" + image + "></img>");
                     }
                 }
-
                 function printArray(){
                     var posts = "";
                     for(i = 0; i < postArray.length; i++){
@@ -65,13 +62,11 @@
                     }
                     document.getElementById("messages").innerHTML = posts;
                 }
-
                 function submitClicked() {
                     addToArray();
                     printArray();
                     clearText();
                 }
-
                 function imageClicked() {
                     addImageToArray();
                     printArray();
@@ -105,14 +100,12 @@
             var $commentForm = $('#send-comment');
             var $commentBox = $('#comment');
             var $comments = $('#comments');
-
             $commentForm.submit(function(e){
                 e.preventDefault();
                 socket.emit('send comment', $commentBox.val());
                 $commentBox.val('');
             });
         });
-
         socket.on('new comment', function(data){
             $comments.append(data + "<br/>");
         });

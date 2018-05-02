@@ -10,11 +10,11 @@
 <body>
     <div class="wrapper">
         <nav>
-            <div class="logo"><a href="/homepage">A-CHAT</a></div>
-            <div class="avatar"><a href="profile"><img src="image/img_avatar.png" alt="Avatar"></a></div>
+            <div class="logo">A-CHAT</div>
+            <div class="avatar"><img src="image/img_avatar.png" alt="Avatar"></div>
             <ul>
                 <li><a class="active" href="/homepage">Home</a></li>
-                <li><a href="/profile">Profile</a></li>
+                <li><a href="profile_page.html">Profile</a></li>
                 <li><a href="chat.html">My Chats</a></li>
                 <li><a href="/logout">Logout</a></li><!--must add logout function-->
             </ul>
@@ -23,11 +23,12 @@
     <div class="content">
         <div class="profile_contents">
             <ul>
-                <li><a href="profile">Profile</a></li>
-                <li><a href="profile_settings">Profile Settings</a></li>
-                <li><a href="account_settings">Account Settings</a></li>  
-                <li><a href="contact">Contact</a></li>
+                <li><a href="profile_settings.html">Profile Settings</a></li>
+                <li><a href="account_settings.html">Account Settings</a></li>  
+                <li><a href="profile_about.html">About</a></li>
+                <li><a href="profile_contact.html">Contact</a></li>
             </ul>
+            <span><p>&copy; 2018</p></span>
         </div>
         <div class="profile_settings">
             <h2>Profile Settings</h2><hr width="12%">
@@ -40,7 +41,7 @@
                     <label for="interests">
                         <b>Interests</b><br>
                     </label>
-                    <textarea name="textarea-interests" id="textarea-int" class="input-textarea"rows="10" cols="70" placeholder="example:paint, books, tennis"></textarea>
+                    <textarea name="textarea-interests" id="textarea-int" class="input-textarea"rows="10" cols="70"></textarea>
                 </div>
                 <div class="input-profile-settings"> 
                     <button type="submit">Save</button>

@@ -12,7 +12,7 @@
     <div class="logo">
         <img src="image/logo.png" alt="logo">
     </div>
-    <form class="log-form" method="POST" action="http://localhost:1234/login" onsubmit="return loginVerify()" name="vLogin">
+    <form class="log-form" method="POST" action="/login" onsubmit="return loginVerify()" name="vLogin">
         <div class="left-bar">
             <div class="logo">
             </div>
@@ -54,7 +54,7 @@
         </div>
     </form>
 
-    <form class="reg-form" method="POST" action="http://localhost:1234/register" onsubmit="return formValidation()" name="vForm">
+    <form class="reg-form" method="POST" action="/register" onsubmit="return formValidation()" name="vForm">
         <div class="left-bar">
             <h1>Terms and Conditions</h1>
             <hr>
@@ -170,10 +170,8 @@
         $('.message a').click(function () {
             $('form').animate({ height: "toggle", opacity: "toggle" }, "slow");
         });
-
         var logemail = document.forms["vLogin"]["logemail"];
         var logpassword = document.forms["vLogin"]["logpassword"];
-
         var username = document.getElementById('input-username');
         var email = document.getElementById('input-email');
         var password = document.getElementById('input-password');
@@ -181,7 +179,6 @@
         var gender_male = document.getElementById('male');
         var gender_female = document.getElementById('female');
         var terms = document.getElementById('terms');
-
         var fullname_error = document.getElementById('fullname_error');
         var username_error = document.getElementById('username_error');
         var email_error = document.getElementById('email_error');
@@ -189,10 +186,8 @@
         var password_error2 = document.getElementById('password_error2');
         var gender_error = document.getElementById('gender_error');
         var terms_error = document.getElementById('terms_error');
-
         username.addEventListener("blur", nameVerify, true);
         email.addEventListener("blur", emailVerify, true);
-
         function formValidation() {
             var username_check = username_validation(username, 6, 12);
             var email_check = email_validation(email);
@@ -208,7 +203,6 @@
                 return true;
             }
         }
-
         function username_validation(username, min_num, max_num) {
             var username_length = username.value.length;
             if(username.value == "") {
@@ -229,7 +223,6 @@
                 return true;
             }
         }
-
         function email_validation(email) {
             var mail_pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
             if(email.value == ""){
@@ -250,8 +243,6 @@
                 return true;
             }
         }
-
-
         function password_validation(password, min_num, max_num) {
             var password_length = password.value.length;
             if(password.value == "") {
@@ -272,7 +263,6 @@
                 return true;
             }
         }
-
         function password_retype_validation(password, password_confirmation){
             if(password.value != password_confirmation.value){
                 password_error2.innerHTML = "Passwords do not match";
@@ -291,7 +281,6 @@
                 return true;
             }
         }
-
         function gender_validation(gender_male, gender_female) {
             if(gender_male.checked || gender_female.checked){
                 gender_error.innerHTML = "";
@@ -302,8 +291,6 @@
                 gender_error.style.color = "#FF0000";
                 return false;
             }
-
-
         }
         
         function terms_validation(terms) {
@@ -316,13 +303,11 @@
                 terms_error.innerHTML = "";
                 return true;
             }
-
         }
         
         
         
         
-
         function loginVerify() {
             if (logemail.value != "") {
                 username_error.innerHTML = "";
@@ -330,20 +315,17 @@
                 return true;
             }
         }
-
         function nameVerify() {
             if (username.value != "") {
                 username_error.innerHTML = "";
                 return true;
             }
         }
-
         function emailVerify() {
             if (email.value != "") {
                 email_error.innerHTML = "";
                 return true;
             }
         }
-
     </script>
 </body>

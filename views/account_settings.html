@@ -10,11 +10,11 @@
 <body>
     <div class="wrapper">
         <nav>
-            <div class="logo"><a href="/homepage">A-CHAT</a></div>
-            <div class="avatar"><a href="profile"><img src="image/img_avatar.png" alt="Avatar"></a></div>
+            <div class="logo">A-CHAT</div>
+            <div class="avatar"><img src="image/img_avatar.png" alt="Avatar"></div>
             <ul>
                 <li><a class="active" href="/homepage">Home</a></li>
-                <li><a href="/profile">Profile</a></li>
+                <li><a href="profile_page.html">Profile</a></li>
                 <li><a href="chat.html">My Chats</a></li>
                 <li><a href="/logout">Logout</a></li><!--must add logout function-->
             </ul>
@@ -23,11 +23,12 @@
     <div class="content">
         <div class="profile_contents">
             <ul>
-                <li><a href="profile">Profile</a></li>
-                <li><a href="profile_settings">Profile Settings</a></li>
-                <li><a href="account_settings">Account Settings</a></li>  
-                <li><a href="contact">Contact</a></li>
+                <li><a href="profile_settings.html">Profile Settings</a></li>
+                <li><a href="account_settings.html">Account Settings</a></li>  
+                <li><a href="profile_about.html">About</a></li>
+                <li><a href="profile_contact.html">Contact</a></li>
             </ul>
+            <span><p>&copy; 2018</p></span>
         </div>
         <div class="account_settings">
             <h2>Account Settings</h2><hr class="title-line" width="12%">
@@ -72,16 +73,13 @@
         </div>
     </div>
     <script>
-
         var username = document.getElementById('input-new-username');
         var current_password = document.getElementById('input-current-password');
         var password = document.getElementById('input-new-password');
         var password_confirmation = document.getElementById('input-repeat-new-password');
-
         var current_password_error = document.getElementById('current_password_error');
         var password_error = document.getElementById('password_error');
         var password_error2 = document.getElementById('password_error2');
-
         function passwordValidation() {
             var current_password_check = current_password_validation(password, 6, 16);
             var password_check = password_validation(password, 6, 16);
@@ -94,7 +92,6 @@
                 return true;
             }
         }
-
         function usernameValidation() {
             var username_check = username_validation(username, 6, 12);
             
@@ -105,7 +102,6 @@
                 return true;
             }
         }
-
         function username_validation(username, min_num, max_num) {
             var username_length = username.value.length;
             if(username.value == "") {
@@ -126,8 +122,6 @@
                 return true;
             }
         }
-
-
          function current_password_validation(password, min_num, max_num) {
             var current_password_length = current_password.value.length;
             if(password.value == "") {
@@ -169,7 +163,6 @@
                 return true;
             }
         }
-
         function password_retype_validation(password, password_confirmation){
             if(password.value != password_confirmation.value){
                 password_error2.innerHTML = "Passwords do not match";
@@ -190,7 +183,6 @@
                 return true;
             }
         }
-
     </script>
 </body>
 </html>

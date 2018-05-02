@@ -10,11 +10,11 @@
 <body>
     <div class="wrapper">
         <nav>
-            <div class="logo"><a href="/homepage">A-CHAT</a></div>
-            <div class="avatar"><a href="profile"><img src="image/img_avatar.png" alt="Avatar"></a></div>
+            <div class="logo">A-CHAT</div>
+            <div class="avatar"><img src="image/img_avatar.png" alt="Avatar"></div>
             <ul>
                 <li><a class="active" href="/homepage">Home</a></li>
-                <li><a href="/profile">Profile</a></li>
+                <li><a href="profile_page.html">Profile</a></li>
                 <li><a href="chat.html">My Chats</a></li>
                 <li><a href="/logout">Logout</a></li><!--must add logout function-->
             </ul>
@@ -23,11 +23,12 @@
     <div class="content">
         <div class="profile_contents">
             <ul>
-                <li><a href="profile">Profile</a></li>
-                <li><a href="profile_settings">Profile Settings</a></li>
-                <li><a href="account_settings">Account Settings</a></li>  
-                <li><a href="contact">Contact</a></li>
+                <li><a href="profile_settings.html">Profile Settings</a></li>
+                <li><a href="account_settings.html">Account Settings</a></li>  
+                <li><a href="profile_about.html">About</a></li>
+                <li><a href="profile_contact.html">Contact</a></li>
             </ul>
+            <span><p>&copy; 2018</p></span>
         </div>
         <div class="profile_about">
             <div class="mini_box_ans">
@@ -35,30 +36,16 @@
                     <img src="image/img_avatar.png" alt="Avatar" width="200" height="200">
                 </div>
             </div>
-            <div class="mini_box_ans" display>
-                <table>
-                        <tr>
-                            <td>
-                                USERNAME:
-                            </td>
-                        <td>
-                            <div id="profile-username" class="username-info"><span class="a"><%= pname %></span></div>
-                        </td>
-                    </tr>
-                </table> 
+            <div class="mini_box_ans">
+                USERNAME:<div id="profile-username" class="username-info"><span class="a">
+                    <%= pname %> 
+                </span></div><br>
             </div>
             <div class="mini_box_otr">
-                E-Mail:
+                E-Mail:<br>
             </div>
             <div class="mini_box_otr">
-                    else..
-            </div>
-            <div class="mini_box_ans">
-                interests:
-            </div>
-            <div class="mini_box_ans">
-                friends:
-            </div>
+                    else..<br>
             </div>
         </div>
     </div>
