@@ -1,4 +1,4 @@
-﻿body {
+body {
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
@@ -75,4 +75,60 @@ nav ul li a:active {
     background: #E2472F;
     color: #fff;
     border-radius: 6px;
+}
+section.sec1 {
+    width: 100%;
+    height: 100vh;
+    background: url(image/regpage_background.jpg);
+    background-size: cover;
+    background-position: center;
+}
+.topic {
+    position: absolute;
+    left: 20%;
+    right: 20%;
+    top: 20%;
+    border: 2px solid rgba(0, 0, 0, 1);
+}
+.content {
+    display: releative;
+    margin-top: 80px;
+    top: 40%;
+    left: 30%;
+}
+.upper-bar {
+    top: 15%;
+}
+.upper-bar .main-name {
+    position: absolute;
+    right: 65%;
+    top: 15%;
+    padding: 10px 15px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.upper-bar button {
+    position: absolute;
+    left: 70%;
+    top: 15%;
+}
+button {
+    float: right;
+    margin-top: 10px;
+    padding: 10px 15px;
+    color: #DAA520;
+    background-color:  rgba(0, 0, 0, 1);
+    text-transform: uppercase;
+    border-color: #DAA520;
+    font-weight: bold;
+}
+.content textarea{
+    display: block;
+    resize:none;
+    width: 100%;
+    padding: 15px 0;
+    border-radius: 1px;
+    border-color: #DAA520;
+    background-color: rgba(255, 255, 255, 0.5);
 }
