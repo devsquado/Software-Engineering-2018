@@ -35,10 +35,16 @@ app.engine('html', ejs.renderFile);
   
 var io = socket(server);
 
-io.on('connection',function(){
+io.on('connection', (socket) => {
     console.log('made socket connection',socket.id);
-})
-
+  
+    socket.on('chat', function(data){
+      io.sockets.emit('chat', data);
+  });
+    socket.on('typing', function(data){
+      socket.broadcast.emit('typing', data);
+  });
+});
 app.use(bodyParser.urlencoded({
     extended: true
 }));
@@ -58,7 +64,6 @@ app.use('/', routes);
 app.get('/', function () {
 
 })
-
 
 
 
