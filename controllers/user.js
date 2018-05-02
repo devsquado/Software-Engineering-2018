@@ -318,7 +318,14 @@ var topic = function (req, res) {
 }
 
 var chat = function(req,res){
-  return res.render('chat2')
+  var name = req.session.user.name;
+  Usermodel.findOne({ name:name }, function(err, user) {
+    if (user) {
+      return res.render('chat2', {
+        pname : user.name
+      });
+    }
+  })  
 }
 
 exports.homepage = homepage;
