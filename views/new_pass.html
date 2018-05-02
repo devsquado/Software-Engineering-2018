@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Reset Your Password</title>
+    <link rel="stylesheet" type="text/css"  href="new_pass.css" />
+</head>
+<body>
+    <div class="container">
+        <h1 style="text-align:center">Reset Your Password</h1>
+        <hr>
+        <div class="input-box">
+            <form class="new-password-form" action="http://localhost:1234/new_pass" method="POST" onsubmit="return formValidation()"></form>
+                <div class="input-reg">
+                    <label for="email"><b>Enter Your New Password</b></label>
+                    <input type="password" placeholder="Password" name="password" id="input-password" required>
+                    <div id="password_error" class="val_error"></div>
+                </div>
+                <div class="input-reg">
+                    <label for="password-repeat">
+                        <b>Confirm Password</b>
+                    </label>
+                    <input id="input-password-confirmation" type="password" name="password_confirmation" placeholder="Re-type Password">
+                    <div id="password_error2" class="val_error">
+                    </div>
+                <hr>
+                <div class="box-footer">
+                    <button type="submit">RESET</button>
+                    <a href="index.html"><button type="submit">CANCEL</button></a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        var password = document.getElementById('input-password');
+        var password_confirmation = document.getElementById('input-password-confirmation');
+ 
+        var password_error = document.getElementById('password_error');
+        var password_error2 = document.getElementById('password_error2');
+
+        function formValidation() {
+            var password_check = password_validation(password, 6, 16);
+            var password_retype_check = password_retype_validation(password, password_confirmation);
+            
+            if(password_check == false || password_retype_check == false)    {
+                return false;
+                console.log("a");
+                
+            }
+            else{ 
+                console.log("a");
+                return true;
+            }
+        }
+
+        function password_validation(password, min_num, max_num) {
+            var password_length = password.value.length;
+            if(password.value == "") {
+                password_error.innerHTML = "Password is required";
+                password_error.style.color = "#FF0000";
+                password.style.border = "3px solid red";
+                return false;
+            }
+            else if(password_length < min_num || password_length > max_num){
+                password_error.innerHTML = "Password should contain " + min_num + " to " + max_num + " characters";
+                password_error.style.color = "#FF0000";
+                password.style.border = "3px solid red";
+                return false;
+            }
+            else{
+                password_error.innerHTML = "";
+                password.style.border = "2px solid black";
+                return true;
+            }
+        }
+
+        function password_retype_validation(password, password_confirmation){
+            if(password.value != password_confirmation.value){
+                password_error2.innerHTML = "Passwords do not match";
+                password_error2.style.color = "#FF0000";
+                password.style.border = "3px solid red";
+                password_confirmation.style.border = "3px solid red";
+                return false;
+            }
+            else if(password.value == ""){
+                password_confirmation.style.border = "3px solid red";
+                return false;
+            }
+            else{
+                password_error2.innerHTML = "";
+                password_confirmation.style.border = "2px solid black";
+                return true;
+            }
+        }
+    
+    </script>
+</body>
+</html>
