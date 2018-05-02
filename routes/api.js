@@ -7,6 +7,7 @@ module.exports = (function () {
 
   router.post('/register', userCtrl.create);
   router.get('/homepage', userCtrl.homepage);
+  //router.get('/usersList', userCtrl.reguser);
   router.post('/newpass',userCtrl.newpass);
   router.post('/forgot',userCtrl.forgot);
   router.get('/profile', userCtrl.profile);
@@ -19,6 +20,9 @@ module.exports = (function () {
   router.get('/contact', userCtrl.contact);
   router.get('/main', userCtrl.main);
   router.get('/topic', userCtrl.topic);
+  
+  
+  
   router.get('/chat', userCtrl.chat);
 
   return router
