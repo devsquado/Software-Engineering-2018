@@ -24,6 +24,10 @@
                 $(".cover").fadeOut('slow');
                 $(".popup").fadeOut('slow');
             });
+            $(".popup-cancel-btn").on('click', function(){
+                $(".cover").fadeOut('slow');
+                $(".popup").fadeOut('slow');
+            });
         });
     </script>
 </head>
@@ -61,7 +65,7 @@
                         <textarea name="textarea-about-topic" id="textarea-at" rows="10" cols="80" placeholder="WHAT THIS TOPIC WITH ABOUT"></textarea>
                     </div>
                     <div class="popup-options">
-                        <a href="" class="popup-cancel">Cancel</a>
+                        <input type="button" href="" class="popup-cancel-btn" value="Cancel" id="popup-cancel-btn">
                         <input type="button" onclick="validityCheck()" value="Create" class="create-topic-button">
                     </div>
                 </form>
