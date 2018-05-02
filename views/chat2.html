@@ -7,16 +7,37 @@
         <link href="/chatstyles.css" rel="stylesheet" />
     </head>
     <body>
-
-        <div id="contact-chat">
-            <h2>Contact Chat</h2>
-            <div id="chat-window">
-                <div id="output"></div>
-                <div id="feedback"></div>
+        <div class="wrapper">
+            <nav>
+                <div class="logo"><a href="/homepage">A-CHAT</a></div>
+                <div class="avatar"><a href="profile"><img src="image/img_avatar.png" alt="Avatar"></a></div>
+                <ul>
+                    <li><a class="active" href="/homepage">Home</a></li>
+                    <li><a href="/profile">Profile</a></li>
+                    <li><a href="/chat">My Chats</a></li>
+                    <li><a href="/logout">Logout</a></li><!--must add logout function-->
+                </ul>
+            </nav>
+        </div>
+        <div class="sec1"></div>
+        
+        <div class="topic">
+            <div class="content">
+                <div class="upper-bar">
+                    <div class="main-name">
+                        <p>Contact Chat</p>
+                    </div>
+                </div>
+                <div id="contact-chat">
+                    <div id="chat-window">
+                        <div id="output"></div>
+                        <div id="feedback"></div>
+                    </div>
+                    <input id="handle" type="text" value= <%= pname %> disabled>
+                    <input id="message" type="text" placeholder="Message" />
+                    <input type="submit" id="send">
+                </div>
             </div>
-            <input id="handle" type="text" value= <%= pname %>>
-            <input id="message" type="text" placeholder="Message" />
-            <button id="send">Send</button>
         </div>
 
 
