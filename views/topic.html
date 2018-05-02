@@ -4,35 +4,6 @@
     <meta charset="utf-8" />
     <title>Home Page</title>
     <link rel="stylesheet" type="text/css" href="topic.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript">
-        $(window).on('scroll', function() {
-            if($(window).scrollTop()) {
-                $('nav').addClass('black');
-            }
-            else {
-                $('nav').removeClass('black');
-            }
-        })
-    </script>
-    <script>
-        jQuery(function($){
-            var socket = io.connect();
-            var $commentForm = $('#send-comment');
-            var $commentBox = $('#comment');
-            var $comments = $('#comments');
-
-            $commentForm.submit(function(e){
-                e.preventDefault();
-                socket.emit('send comment', $commentBox.val());
-                $commentBox.val('');
-            });
-        });
-
-        socket.on('new comment', function(data){
-            $comments.append(data + "<br/>");
-        });
-    </script>
 </head>
 <body>
     
@@ -58,10 +29,10 @@
     </div>
     <div class="topic">
         <div class="content">
-            <p id="messages"></p>
-            <textarea id="message-input"></textarea>
-            <button id="submit-message" value="Submit">Send</button>
-            <button id="submit-image" value="Submit Image">Image</button>
+            <div class="messages" id="messages"></div>
+            <input type="text" id="message-input">
+            <input type="submit" id="submit-message" value="Submit">
+            <input type="submit" id="submit-image" value="Submit Image">
             <script>
                 var submitButton = document.getElementById("submit-message");
                 var imageButton = document.getElementById("submit-image");
@@ -116,5 +87,35 @@
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.js"></script>
+    <script src="../node_modules/socket.io-client/lib/on.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript">
+        $(window).on('scroll', function() {
+            if($(window).scrollTop()) {
+                $('nav').addClass('black');
+            }
+            else {
+                $('nav').removeClass('black');
+            }
+        })
+    </script>
+    <script>
+        jQuery(function($){
+            var socket = io.connect();
+            var $commentForm = $('#send-comment');
+            var $commentBox = $('#comment');
+            var $comments = $('#comments');
+
+            $commentForm.submit(function(e){
+                e.preventDefault();
+                socket.emit('send comment', $commentBox.val());
+                $commentBox.val('');
+            });
+        });
+
+        socket.on('new comment', function(data){
+            $comments.append(data + "<br/>");
+        });
+    </script>
 </body>
 </html>
