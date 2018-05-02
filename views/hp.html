@@ -24,6 +24,10 @@
                 $(".cover").fadeOut('slow');
                 $(".popup").fadeOut('slow');
             });
+            $(".popup-cancel-btn").on('click', function(){
+                $(".cover").fadeOut('slow');
+                $(".popup").fadeOut('slow');
+            });
         });
     </script>
 </head>
@@ -57,7 +61,7 @@
                     </div>
                 </form>
                 <div class="popup-options">
-                    <a href="" class="popup-cancel">Cancel</a>
+                    <input type="button" href="" class="popup-cancel-btn" value="Cancel" id="popup-cancel-btn">
                     <input type="button" onclick="validityCheck()" value="Create" class="create-topic-button">
                 </div>
             </div>
@@ -68,13 +72,6 @@
         <ul id="main-topics-list"></ul>
         <!--
         <div class="mini-box-ans"><a href="/main">MAIN 1</a></div>
-        <div class="mini-box-ans"><a href="/main">MAIN 2</a></div>
-        <div class="mini-box-ans"><a href="/main">MAIN 3</a></div>
-        <div class="mini-box-ans"><a href="/main">MAIN 4</a></div>
-        <div class="mini-box-ans"><a href="/main">MAIN 5</a></div>
-        <div class="mini-box-ans"><a href="/main">MAIN 6</a></div>
-        <div class="mini-box-ans"><a href="/main">MAIN 7</a></div>
-        <div class="mini-box-ans"><a href="/main">MAIN 8</a></div>
             -->
     </div>
     <script>
