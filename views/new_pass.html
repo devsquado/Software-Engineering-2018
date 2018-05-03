@@ -4,107 +4,38 @@
 <head>
     <meta charset="utf-8" />
     <title>Reset Your Password</title>
-    <style>
-            body {
-        background-image: url(image/regpage_background.jpg);
-        background-repeat: no-repeat;
-        font-family: Arial, Helvetica, sans-serif;
-        font: bold;
-    }
-    .container {
-        position: absolute;
-        top: 30%;
-        left: 40%;
-        margin: auto;
-        padding: 15px;
-        width: auto;
-        height: auto;
-        background-color: rgba(255, 255, 0, 0.1);
-        border: 10px solid rgba(0, 0, 0, 1);
-    }
-    .input-reg {
-        margin-top: 20px;
-        margin-left: 10px;
-        margin-bottom: 20px;
-    }
-    hr {
-        display: block;
-        height: 1px;
-        border: 0;
-        border-top: 1px solid rgba(0, 0, 0, 1);
-        margin: 1em 0;
-        padding: 0; 
-    }
-    .input-box input[type=password], input[type=text]{
-        position: relative;
-        width: 350px;
-        padding: 15px;
-        margin-bottom: 15px;
-        margin-top: 15px;
-        display: block;
-        border-radius: 10px;
-        border: none;
-        background-color: rgba(255, 255, 255, 0.5);
-    }
-    .input-box input[type=password]:focus, input[type=text]:focus{
-        box-shadow: 0px 0px 30px;
-    }
-
-    .box-footer {
-        position: relative;
-        left: 60%;
-        text-align: center;
-        display: inline
-    }
-    .container button {
-        font-family: "Roboto", sans-serif;
-        font: bold;
-        text-transform: uppercase;
-        outline: 0;
-        background: rgba(0, 0, 0, 1);
-        width: 20%;
-        border: 0;
-        padding: 15px;
-        color: rgba(255, 255, 255, 1);
-        font-size: 14px;
-        cursor: pointer;
-        border-radius: 15px;
-    }
-    .container button:active, .container button:hover{
-        background-color: rgba(255, 255, 0, 1);
-        color: black;
-    }
-    </style>
+    <link rel="stylesheet" type="text/css"  href="new_pass.css" />
 </head>
 <body>
     <div class="container">
         <h1 style="text-align:center">Reset Your Password</h1>
         <hr>
         <div class="input-box">
-            <form class="new-password-form" action="http://localhost:1234/new_pass" method="POST" onsubmit="return formValidation()">
+            <form class="new-password-form" action="/newpass" method="POST" onsubmit="return formValidation()">
                 <div class="input-reg">
-                    <label for="password"><b>Enter Your New Password</b></label>
-                    <input type="password" placeholder="Password" name="password" id="input-password">
+                    <label for="email"><b>Enter Your New Password</b></label>
+                    <input type="password" placeholder="Password" name="password" id="input-password" required>
                     <div id="password_error" class="val_error"></div>
                 </div>
                 <div class="input-reg">
-                    <label for="password-confirmation">
+                    <label for="password-repeat">
                         <b>Confirm Password</b>
                     </label>
                     <input id="input-password-confirmation" type="password" name="password_confirmation" placeholder="Re-type Password">
-                    <div id="password_error2" class="val_error"></div>
-                </div>
+                    <div id="password_error2" class="val_error">
+                    </div>
+
                 <div class="input-reg">
-                    <label for="token">
-                        <b>Enter Token</b>
-                    </label>
-                    <input id="input-token" type="text" name="token" placeholder="Enter Token URL">
-                    <div id="token_error" class="val_error"></div>
-                </div>
+                            <label for="token">
+                                <b>Enter Token</b>
+                            </label>
+                            <input id="input-token" type="text" name="token" placeholder="Enter Token URL">
+                            <div id="token_error" class="val_error"></div>
+                </div>    
                 <hr>
                 <div class="box-footer">
                     <button type="submit">RESET</button>
-                    <a href="index.html"><button type="submit">CANCEL</button></a>
+                    <a href='/'><button type="submit">CANCEL</button></a>
                 </div>
             </form>
         </div>
@@ -113,25 +44,23 @@
     <script>
         var password = document.getElementById('input-password');
         var password_confirmation = document.getElementById('input-password-confirmation');
-        var token = document.getElementById('input-token')
  
         var password_error = document.getElementById('password_error');
         var password_error2 = document.getElementById('password_error2');
-        var token_error = document.getElementById('token_error');
-
         function formValidation() {
             var password_check = password_validation(password, 6, 16);
             var password_retype_check = password_retype_validation(password, password_confirmation);
-            var token_check = token_validation(token);
-
-            if(password_check == false || password_retype_check == false || token_check == false)    {
+            
+            if(password_check == false || password_retype_check == false)    {
                 return false;
+                console.log("a");
+                
             }
             else{ 
+                console.log("a");
                 return true;
             }
         }
-
         function password_validation(password, min_num, max_num) {
             var password_length = password.value.length;
             if(password.value == "") {
@@ -152,7 +81,6 @@
                 return true;
             }
         }
-
         function password_retype_validation(password, password_confirmation){
             if(password.value != password_confirmation.value){
                 password_error2.innerHTML = "Passwords do not match";
@@ -168,20 +96,6 @@
             else{
                 password_error2.innerHTML = "";
                 password_confirmation.style.border = "2px solid black";
-                return true;
-            }
-        }
-
-        function token_validation(token){
-            if(token.value == ""){
-                token_error.innerHTML = "Token is required";
-                token_error.style.color = "#FF0000";
-                token.style.border = "3px solid red";
-                return false;
-            }
-            else{
-                token_error.innerHTML = "";
-                token.style.border = "2px solid black";
                 return true;
             }
         }
